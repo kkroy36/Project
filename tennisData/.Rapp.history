@@ -1,3 +1,1725 @@
+dm
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+dm <- data.frame(GSwon$winner_seed,fswp,sswp)
+dm
+dm[1:10,]
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+wProb <- hash(wProb)#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+dm <- data.frame(GSwon$winner_seed,fswp,sswp)
+wProb
+a <- hash(1:2,2:4)
+a <- hash(1,2,3,4)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+dm <- data.frame(GSwon$winner_seed,fswp,sswp)
+wProbHash
+wProbHash[1]
+wProbHash["1"]
+wProbHash[["1"]]
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+dm <- data.frame(fswp,sswp,wProbHash[[toString(GSwon$winner_seed)]])
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities for later#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+prob <- lapply(GSwon$winner_seed,function(GSwon$Winner_seed) wProbHash[[toString(GSwon$winner_seed)]])#
+#dm <- data.frame(fswp,sswp,wProbHash[[toString(GSwon$winner_seed)]])
+help(lapply)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities for later#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+probs <- lapply(seeds,get_hash)#
+#dm <- data.frame(fswp,sswp,)
+probs
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities for later#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#dm <- data.frame(fswp,sswp,)
+probs
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.matrix(fswp,sswp,probs)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- as.matrix(data.frame(fswp,sswp,probs))
+dm
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- nrows(dm) - 1#
+	x <- as.matrix(dm[1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	yhat <- x%*%what#
+	return (yhat)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs))#
+#get regressed values#
+yhat <- linReg(dm)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- nrows(dm) - 1#
+	x <- as.matrix(dm[1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	yhat <- x%*%what#
+	return (yhat)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#get regressed values#
+yhat <- linReg(dm)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- nrow(dm) - 1#
+	x <- as.matrix(dm[1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	yhat <- x%*%what#
+	return (yhat)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#get regressed values#
+yhat <- linReg(dm)
+dm[1,]
+dm[1,1:2]
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- ncol(dm) - 1#
+	x <- as.matrix(dm[1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	yhat <- x%*%what#
+	return (yhat)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#get regressed values#
+yhat <- linReg(dm)
+dim(dm)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- ncol(dm) - 1#
+	x <- as.matrix(dm[1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	print(dim(x))#
+	print(dim(y))#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	yhat <- x%*%what#
+	return (yhat)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#get regressed values#
+yhat <- linReg(dm)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- ncol(dm) - 1#
+	x <- as.matrix(dm[,1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	print(dim(x))#
+	print(dim(y))#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	yhat <- x%*%what#
+	return (yhat)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#get regressed values#
+yhat <- linReg(dm)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- ncol(dm) - 1#
+	x <- as.matrix(dm[,1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	yhat <- x%*%what#
+	return (yhat)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#get regressed values#
+yhat <- linReg(dm)
+plot(probs,col="green",type='l')
+plot(probs[1:10],col="green",type='l')
+lines(yhat[1:10],col="red")
+par(mfrow=c(1,2))
+plot(probs[1:10],col="green",type='l')
+plot(yhat[1:10],col="red",type='l')
+yhat
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- ncol(dm) - 1#
+	x <- as.matrix(dm[,1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	yhat <- x%*%what#
+	print(yhat)#
+	return (yhat)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#get regressed values#
+yhat <- linReg(dm)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- ncol(dm) - 1#
+	x <- as.matrix(dm[,1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	print(x)#
+	print(y)#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	yhat <- x%*%what#
+	print(yhat)#
+	return (yhat)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#get regressed values#
+yhat <- linReg(dm)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- ncol(dm) - 1#
+	x <- as.matrix(dm[,1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	print(x)#
+	print(y)#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	print(what)#
+	return (0)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#get regressed values#
+yhat <- linReg(dm)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- ncol(dm) - 1#
+	x <- as.matrix(dm[,1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	print(solve(t(x)%*%x))#
+	print(t(x)%*%y)#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	print(what)#
+	return (0)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#get regressed values#
+yhat <- linReg(dm)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- ncol(dm) - 1#
+	x <- as.matrix(dm[,1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	print((t(x)%*%x))#
+	print(t(x)%*%y)#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	print(what)#
+	return (0)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#get regressed values#
+yhat <- linReg(dm)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- ncol(dm) - 1#
+	x <- as.matrix(dm[,1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	print(paste(x,"\n",y))#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	print(what)#
+	return (0)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#get regressed values#
+yhat <- linReg(dm)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- ncol(dm) - 1#
+	x <- as.matrix(dm[,1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	print(x)#
+	print(y)#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	print(what)#
+	return (0)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#get regressed values#
+yhat <- linReg(dm)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#
+#get regressed values#
+#simple linear regression function#
+dm <- as.matrix(dm)#
+npred <- ncol(dm) - 1#
+x <- as.matrix(dm[,1:npred])#
+y <- as.matrix(dm[,npred+1])#
+print(x)#
+print(y)#
+what <- solve(t(x)%*%x)%*%(t(x)%*%y)
+what
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#
+#get regressed values#
+#simple linear regression function#
+dm <- as.matrix(dm)#
+npred <- ncol(dm) - 1#
+x <- as.matrix(dm[,1:npred])#
+y <- as.matrix(dm[,npred+1])#
+z <- base::'%*%' (t(x),x)#
+print(z)#
+what <- solve(t(x)%*%x)%*%(t(x)%*%y)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#
+#get regressed values#
+#simple linear regression function#
+dm <- as.matrix(dm)#
+npred <- ncol(dm) - 1#
+x <- as.matrix(dm[,1:npred])#
+y <- as.matrix(dm[,npred+1])#
+what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+X <- matrix(c(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1), nrow=4)#
+y <- matrix(c(1, 2, 3, 4), nrow=4)#
+Xt <- t(X)#
+Xy <- Xt%*%y#
+print(Xy)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- data.frame(fswp,sswp,probs)#
+#
+#get regressed values#
+#simple linear regression function#
+dm <- as.matrix(dm)#
+npred <- ncol(dm) - 1#
+x <- as.matrix(dm[,1:npred])#
+y <- as.matrix(dm[,npred+1])#
+print(x)#
+print(y)#
+what <- solve(t(x)%*%x)%*%(t(x)%*%y)
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- na.omit(data.frame(fswp,sswp,probs))#
+#
+#get regressed values#
+#simple linear regression function#
+dm <- as.matrix(dm)#
+npred <- ncol(dm) - 1#
+x <- as.matrix(dm[,1:npred])#
+y <- as.matrix(dm[,npred+1])#
+print(x)#
+print(y)#
+what <- solve(t(x)%*%x)%*%(t(x)%*%y)
+what
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- ncol(dm) - 1#
+	x <- as.matrix(dm[,1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	return(x%*%what)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- na.omit(data.frame(fswp,sswp,probs))#
+#
+#get regressed values#
+yhat <- linReg(dm)#
+plot(probs,type='l',col="green")#
+lines(yhat,col="red")
+#include necessary libraries#
+library(hash)#
+#
+#program to perform data exploration on tennis data#
+#clear workspace#
+rm(list=ls())#
+#
+#simple linear regression function#
+linReg <- function(dm){#
+	dm <- as.matrix(dm)#
+	npred <- ncol(dm) - 1#
+	x <- as.matrix(dm[,1:npred])#
+	y <- as.matrix(dm[,npred+1])#
+	what <- solve(t(x)%*%x)%*%(t(x)%*%y)#
+	return(x%*%what)#
+}#
+#
+#read data#
+data <- read.csv("tennis.csv")#
+GSwon <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,w_ace:w_bpSaved)))#
+GSlost <- na.omit(subset(data,tourney_level = "G",select = c(surface,round,winner_seed,loser_seed,l_ace:l_bpSaved)))#
+#
+#encode surfaces and round#
+surfaces <- hash(as.numeric(unique(GSwon$surface)),unique(GSwon$surface))#
+rounds <- hash(as.numeric(unique(GSwon$round)),unique(GSwon$round))#
+#
+#replace encodings#
+GSwon[,1] <- as.numeric(GSwon[,1])#
+GSwon[,2] <- as.numeric(GSwon[,2])#
+GSlost[,1] <- as.numeric(GSlost[,1])#
+GSlost[,2] <- as.numeric(GSlost[,2])#
+#
+#convert data to matrix#
+GSwondm <- as.matrix(GSwon)#
+GSlostdm <- as.matrix(GSlost)#
+#
+#get only players stats#
+GSwonStats <- as.matrix(GSwon[5:ncol(GSwon)])#
+GSlostStats <- as.matrix(GSlost[5:ncol(GSlost)])#
+#
+#construct probability distribution of winning per seed#
+wProb <- data.frame(table(GSwondm[,3]))#
+wProb$Freq <- wProb$Freq*100/sum(wProb$Freq)#
+colnames(wProb) <- c("Seeding","Prob")#
+#create hash map of seeding and probabilities#
+wProbHash <- hash(wProb$Seeding,wProb$Prob)#
+#define get hash function#
+get_hash <- function(x) return(wProbHash[[toString(x)]])#
+#
+#regress probability of winning using predictors#
+#predictors considered are 1st serve win percentage and 2nd serve win percentage#
+fswp <- (GSwon$w_1stWon/GSwon$w_1stIn)*100#
+sswp <- (GSwon$w_2ndWon/(GSwon$w_svpt - GSwon$w_1stIn))*100#
+seeds <- as.numeric(GSwon$winner_seed)#
+#get probability of winning of seeds from hash table#
+probs <- as.numeric(lapply(seeds,get_hash))#
+#construct data matrix#
+dm <- na.omit(data.frame(fswp,sswp,probs))#
+#
+#get regressed values#
+yhat <- linReg(dm)#
+plot(probs[1:10],type='l',col="green")#
+lines(yhat[1:10],col="red")
+cor(yhat,probs)
 length(probs)
 length(yhat)
 #include necessary libraries#
@@ -2974,129 +4696,71 @@ setwd("Kaushik")
 setwd("../")
 write.csv(djok,"data.csv",row.names=TRUE,col.names=TRUE)
 q()
-setwd("tennisData")
+x1 <- rnorm(0,0.002)
+x1 <- rnorm(100,0,0.002)
+x2 <- rnorm(100,0,0.003)
+plot(x1,x2)
+plot(x1,x2,col=c("green","red"))
+plot(x1,x2,col=c("green","red"),pch=19)
+x2 <- rnorm(10000,0,0.003)
+x1 <- rnorm(10000,0,0.002)
+plot(x1,x2,col=c("green","red"),pch=19)
+data(iris)
+pairs(iris[1:4])
+names(pairs)
+names(iris)
+cor(iris[1:4])
+attach(iris)
+ls()
+hist(Petal.Length)
+x <- as.matrix(c(1,2))
+y <- as.matrix(c(1,2))
+x%*%y
+t(x)%*%y
+df <- data.frame(x,y)
+df
+dm <- as.matrix(df)
+dm
+t(dm)%*%dm
+q()
+setwd("~/Project/tennisData")
 source("analysis.R")
-source("analysis.R")
-names(data)
-del(data[,1])
-data[,1] = FALSE
-names(data)
-data$X = FALSE
-names(data)
-data[,1] <- NULL
-names(data)
-source("analysis.R")
-names(data)
-dm <- as.matrix(data)
-nrow(dm)
-unique(data$loser_name)
-cov(data[5:23])
-cov(data[5:22])
-cor(data[5:22])
-attach(data)
-plot(w_ace,w_1stWon,pch=19)
-plot(w_ace,w_1stWon,pch=19,col("green,red"))
-plot(w_ace,w_1stWon,pch=19,col("green","red"))
-plot(w_ace,w_1stWon,pch=19,col=c("green","red"))
-x <- as.matrix(w_ace)
-y <- as.matrix(w_1stWon)
-m <- solve(t(x)%*%x)%*%(t(x)%*%y)
-lines(x%*%m)
-dev.new()
-summary(lm(w_ace~w_1stWon,data="data"))
-summary(lm(w_ace~w_1stWon,data))
-m
-lines(x%*%(-1.79633),col="blue")
-l <- lm(w_ace~w_1stWon,data)
-abline(l,col="blue",lwd=4)
-abline(l,col="blue",lwd="4")
-abline(l,col="blue",lwd="4")
-plot(l)
-l
-plot((x%*%(0.2112) - 1.7963))
-plot((x%*%(0.2112) - 1.7963),type='l')
-lines(x%*%m)
-source("analysis.R")
-attach(data)
-lm(w_ace~.,data)
-lm(w_ace~.,data[1:22])
-summary(lm(w_ace~.,data[1:22]))
-source("analysis.R")
-attach(data)
-summary(lm(w_ace~.,data[1:22]))
-summary(lm(w_df~.,data[1:22]))
-summary(lm(w_svpt~.,data[1:22]))
-pairs(data[1:22])
-pairs(data[1:10])
-pairs(data[1,])
-help(pairs)
-pairs(data[1:4])
-names(data)[1:4]
-plot(surface,best_of)
-pairs(data[1:4])
-names(data)
-pairs(data[5:10])
-pairs(data[5:22])
-pairs(data[10:15])
-pairs(data[10:15],col=names(data[10:15]))
-pairs(data[10:15])
-par(mfrow=c(1,3))
-hist(l_ace)
-hist(w_bpFaced)
-hist(l_ace*w_bpFaced)
-dev.new()
-pairs(data[10:15])
-par(mfrow=c(6,3))
-hist(w_ace)
-par(mfrow=c(9,2))
-hist(w_ace)
-par(mfrow=c(2,2))
-hist(w_ace)
-hist(l_ace)
-hist(w_svpt)
-hist(l_svpt)
-dev.new()
-pairs(data[,c(5,14,7,16)])
-colMeans(data)
-colMeans(data[5:22])
-data[1,]
-data5 <- data[data[,1]==5,c(5:22)]
-data3 <- data[data[,1]==3,c(5:22)]
-colMeans(data5)
-colMeans(data3)
-24*5
-120*4
-summary(data5)
-summary(data3)
-rm(data5)
-rm(data3)
-data[1,]
-data5G <- data[data[,1] == 5,data[,2]=="Grass",c(5:22)]
-data5G <- data[data[,1] == 5,c(5:22)]
-levels(surface)
-data5G <- data5G[data5G[,2]=="Grass",c(1:18)]
-names(data5G)
-summary(data5G)
-summary(data5G)
-data5G <- data[data[,2]=="Grass",c(5:22)]
-summary(data5G)
-data5G <- data[data[,2]=="Grass",]
-names(data5G)
-data5G <- data5G[data5G[,1]==5,c(5:22)]
-summary(data5G)
-length(data5G[,1])
-data5G[c(1,3,10,12)]
-data5G[,c(1,3,10,12)]
-data[7,23]
-names(data)
-data[7,4]
-data[7,3]
-data[7,]
-levels(data[,4])
 library(sqldf)
-names(data)
-Grass5 <- sqldf(select * from data where surface="Grass" and best_of=5)
-Grass5 <- sqldf("select * from data where surface="Grass" and best_of=5")
-Grass5 <- sqldf("select * from data where surface='Grass' and best_of=5")
-Grass5[1:5,]
+source("analysis.R")
+require(MASS)
+head(djok)
+m = polr(Result~.,data=djok,HESS=TRUE)
+m = polr(as.factor(Result)~.,data=djok,HESS=TRUE)
+m = glm(as.factor(Result)~.data=djok,family="binomial")
+help(glm)
+m <- glm(as.factor(Result)~.data=djok,family="binomial")
+m <- glm(as.factor(Result)~.data=djok,family=binomial)
+m <- glm(as.factor(Result)~.data = djok,family = binomial())
+m <- glm(Result~.data = djok,family = binomial())
+djok
+Head(djok)
+head(djok)
+model <- glm(Result ~.,family=binomial(link='logit'),data=djok)
+summary(model)
+plot(model)
+names(model)
+model$coefficients
+y <- as.matrix(djok[1:18])%*%as.matrix(model$coefficients[2:19])
+y <- y - 0.59037852
+sigma <- function(x) return(1/(1+exp(-x)))
+p <- sigma(y)
+p
+as.numeric(p > 0.5)
+djok[,19]
+require(MASS)
+model <- polr(Result ~.,data=djok,HESS=TRUE)
+model <- polr(factor(Result) ~.,data=djok,HESS=TRUE)
+x <- as.numeric(p > 0.5)
+djok[,19] - x
+abs(djok[,19] - x)
+sum(abs(djok[,19] - x))
+length(p)
+60/313
+313-60
+253/313
 q()
