@@ -1,3 +1,127 @@
+x1 <- rnorm(100)#
+x2 <- rnorm(100)#
+z <- x1*x2#
+scatter3D(x1,x2,z)
+x1 <- rnorm(10000)
+x2 <- rnorm(10000)
+z <- x1*x2
+scatter3D(x1,x2,z)
+x1 <- seq(0,1,by=0.001)
+x1 <- dnorm(x1)
+plot(x1)
+x2 <- dnorm(x1)
+z <- x1*x2
+scatter3D(seq(0,1,by=0.001),seq(0,1,by=0.001),z)
+x <- seq(-1,1,by=0.0001)
+y <- seq(-1,1,by=0.0001)
+x1 <- dnorm(x)
+x2 <- dnorm(y)
+z <- x1*x2
+scatter3D(x,y,z)
+help(scatter3D)
+scatter3D(x,y,z,type='l')
+scatter3D(x,y,z,type='p')
+scatter3D(x,y,z,type='p',pch=19)
+scatter3D(x,y,z,type='p',pch=124)
+scatter3D(x,y,z,type='p',pch=24)
+plot(x1,x2)
+x1 <- rnorm(10000)
+x2 <- rnorm(10000)
+z <- x1*x2
+scatter3D(x1,x2,z)
+mvrnorm
+help(mvrnorm)
+require(plot3D)
+require(MASS)
+help(mvrnorm)
+Sigma <- matrix(c(10,3,3,2),2,2)
+x <- (mvrnorm(n = 1000, rep(0, 2), Sigma))
+names(x)
+x[,1]
+hist3D(x)
+hist3D(z=x)
+hist3D(z=x[,1])
+hist3D(z=as.matrix(x[,1]))
+hist(x[,1])
+par(mfrow=c(1,2,3))
+par(mfrow=c(1,3))
+hist(x[,1])
+hist(x[,2])
+hist3D(z=x)
+w <- solve(t(x)%*%x)
+rm(w)
+hist(x)
+hist(x[,1])
+hist(x[,2])
+x[1,]
+hist3D(z=x)
+help(hist3D)
+hist3D(z=x,x=x[,1],y=x[,2])
+hist3D(z=x,x=x[1,],y=x[2,])
+hist3D(z=x,x=x[,1],y=x[,2])
+hist3D(z=x,x=x[,1],y=x[1,])
+hist(x)
+scatter3D(x[,1],x[,2])
+scatter3D(x[,1],x[,2],z=x)
+length(x[,1])
+length(z)
+length(x)
+scatter2D(x[,1],x[,2])
+help(dvnorm)
+help(dmvnorm)
+help(mvrnorm)
+help(dmvtnorm)
+library(mvtnorm)
+help(mvtnorm)
+help(dmvnorm)
+x <- seq(-1,1,by=0.001)
+x <- dnorm(x)
+hist(x)
+x <- seq(-1,1,by=0.001)
+x <- pnorm(x)
+hist(x)
+x <- seq(-1,1,by=0.001)
+x1 <- rnorm(1000)
+x2 <- rnorm(1000,0,0.5)
+hist(X1)
+hist(x1)
+hist(x2)
+m <- data.matrix(x1,x2)
+bij <- rmvnorm(1000,mean=colMeans(m),sigma=cov(x1,x2))
+cov(x1,x2)
+cov(m)
+m
+x1
+x2
+m <- as.matrix(data.frame(x1,x2))
+m
+me <- colMeans(m)
+me
+sig <- cov(m)
+sig
+bij <- rmvnorm(1000,mean=me,sigma=sig)
+hist(bij)
+hist3D(bij)
+hist3D(z = bij)
+dim(bij)
+y <- x1 + x2
+hist(y)
+hist(bij)
+scatter3D(x1,x2,bij)
+help(rmvnorm)
+density <- dmvnorm(bij,mean=me,sigma=sig)
+scatter3D(x1,x2,density)
+x1 <- rnorm(10000)
+x2 <- rnorm(10000,0,0.5)
+mat <- as.matrix(data.frame(x1,x2))
+bij <- rmvnorm(10000,mean=colMeans(mat),sigma=cov(mat))
+density <- dmvnorm(bij,mean=colMeans(bij),sigma = cov(bij))
+scatter3D(x1,x2,density)
+plot(denisty)
+plot(density)
+density <- dmvnorm(mat,mean=colMeans(mat),sigma=cov(mat))
+plot(density)
+hist(density)
 data.frame(mat,density)
 rm(list=ls())
 dev.kill
@@ -52,208 +176,79 @@ p1 <- x/(x+y)
 p2 <- y/(x+y)
 p1
 p2
-x <- readline("Enter something: ")
-x
-x <- readline("Enter something: ")
-x
-setwd("~/Project/tennisData")
-help(paste)
-rm(list=ls()) #clear workspace#
-year <- readline("Enter which year:")#
-fileName <- paste("atp_matches_","year")
-rm(list=ls()) #clear workspace#
-year <- readline("Enter which year:")
-rm(list=ls()) #clear workspace#
-year <- readline("Enter which year:")#
-fileName <- paste("atp_matches_","year")
-rm(list=ls()) #clear workspace#
-year <- readline("Enter which year:")
-2015
-year
-x <- readline("hello")
-x
-year <- readline("Enter which year:")
-year
-rm(list=ls()) #clear workspace#
-year <- readline("Enter which year:")
-rm(list=ls()) #clear workspace#
-year <- readline("Enter which year:")
-source("main.R")
-fileName
-fileName
-source("main.R")
-fileName
-source("main.R")
-fileName
-source("main.R")
-fileName
-source("main.R")
-fileName
-source("main.R")
-source("main.R")
-this_year
-last_year
-source("main.R")
-source("main.R")
-tyd[1,]
-lyd[1,]
-source("main.R")
-tyd[1,]
-source("main.R")
-names(tyd)
-help(subset)
-h2hty <- subset(tyd,winner_name == p1 && loser_name == p2,select=c(winner_name,loser_name))
-h2hty[1:5,]
-h2hty
-h2hty <- subset(tyd,winner_name == p1,select=c(winner_name,loser_name))
-h2hty
-h2hty <- subset(tyd,winner_name == p1,loser_name == p2,select=c(winner_name,loser_name))
-h2hty <- subset(tyd,winner_name,loser_name == c(p1,p2),select=c(winner_name,loser_name))
-h2hty <- subset(tyd,winner_name,loser_name == c(p1,p2),select=c(winner_name,loser_name))
-h2hty <- subset(tyd,winner_name,loser_name == p1,select=c(winner_name,loser_name))
-names(tyd)
-h2hty <- tyd[tyd$winner_name==p1 & tyd$loser_name == p2,c(11,21)]
-h2hty
-source("main.R")
+setwd("Project/tennisData")
+source("Logistic.R")
 ls()
-ls()
-source("main.R")
+h2hly
 h2hty
+source("Logistic.R")
 h2hly
-sort(h2hty)
-dim(h2hty)
-source("main.R")
+h2hty
+source("Logistic.R")
 h2hly
-source("main.R")
 names(h2hly)
-h2hly$winner_name
-factor(h2hly$winner_name)
-source("main.R")
-pa1
-p1a
-p1b
-h2hly
-source("main.R")
-colnames(h2hly)
-source("main.R")
-p1a
-p2a
-p1b
-source("main.R")
-prob1
-prob2
-source("main.R")
-prob1
-prob2
-as.matrix(tyd)[1,]
-a = 1
-b = 2
-(a != b) && (b!=a)
-(a != b) & (b!=a)
-p1 = "hi"
-print(as.name("p1"))
-x <- print(as.name("p1"))
-x
-x
-p1
-h2hly1 <- lyd[(lyd$winner_name==p1 & lyd$loser_name==p2) | (lyd$winner_name==p2 & lyd$loser_name==p1),c(11,21)]
-h2hly1
-h2hly1 <- lyd[((lyd$winner_name==p1 & lyd$loser_name==p2) | (lyd$winner_name==p2 & lyd$loser_name==p1)),c(11,21)]
-h2hly1
-h2hly1 <- lyd[lyd$winner_name==c(p1,p2) & lyd$loser_name==c(p1,p2),c(11,21)]
-h2hly1 <- lyd[lyd$winner_name%in%c(p1,p2) & lyd$loser_name%in%c(p1,p2),c(11,21)]
-h2hly1
-lyd$winner_name%in%c(p1,p2)
-lyd$winner_name%in%c(p1,p2) & lyd$loser_name%in%c(p1,p2)
-lyd$winner_name%in%c(p1,p2) | lyd$loser_name%in%c(p1,p2)
-h2hly1 <- lyd[lyd$winner_name%in%c(p1,p2) && lyd$loser_name%in%c(p1,p2),c(11,21)]
-h2hly1
-h2hly1 <- lyd[(as.numeric(lyd$winner_name%in%c(p1,p2)) + as.numeric(lyd$loser_name%in%c(p1,p2)))==2,c(11,21)]
-h2hly1
-x <- as.numeric(lyd$winner_name%in%c(p1,p2)
-x
-x <- as.numeric(lyd$winner_name%in%c(p1,p2))
-x
-y <- as.numeric(lyd$loser_name%in%c(p1,p2))
-y
-x + y
-sum(x)
-sum(x+y)
-tdf <- data.frame(c("1","2","3"),c("2","1","3"))
-colnames(tdf) = c("1","2","3")
-colnames(tdf) = c("1","2")
-tdf
-names(tdf)
-tdf[tdf$1 %in% names(tdf) & tdf$2 %in% names(tdf)]
-tdf[tdf$1 %in% names(tdf)]
-colnames(tdf) <- c("one","two")
-tdf[tdf$one %in% c("1","2")]
-tdf[c("1","2")%in%tdf$one]
-tdf$one %in% c("1","2")
-as.numeric(tdf$one %in% c("1","2"))
-x <- as.numeric(tdf$one %in% c("1","2"))
-x %in% c(1)
-which(x %in% c(1))
-which(tdf$one %in% c("1","2"))
-tdf$one %in% c("1","2") & tdf$two %in% c("1","2")
-source("main.R")
+h2hly[,c(11,21)]
+h2hty[,c(11,21)]
+source("Logistic.R")
+h2hty[,c(11,21)]
+h2hty[,c(11,21)]
+source("Logistic.R")
+h2hty[,c(11,21)]
+h2hly[,c(11,21)]
+source("Logistic.R")
+h2hly[,c(11,21)]
+h2hty[,c(11,21)]
+names(h2hly)
+length(h2hly)
+source("Logistic.R")
+source("Logistic.R")
+data
+help(glm)
+source("Logistic.R")
+weights
+weight
+dataly
+h2hly$w_svpt
+source("Logistic.R")
+model$coefficients
+source("Logistic.R")
+w
+model$coefficients
+model$coefficients[!is.na(model$coefficients)]
+w <- model$coefficients[!is.na(model$coefficients)]
+w
+list(w)
+source("Logistic.R")
+source("Logistic.R")
 probs
-probsMLE
-source("main.R")
-probsMLE
-h2hly
-source("main.R")
-h2hly
-source("main.R")
-h2hly
-h2hty
-source("main.R")
-source("main.R")
-source("main.R")
-source("main.R")
-source("main.R")
-source("main.R")
-source("main.R")
-source("main.R")
-h2hly
-source("main.R")
-h2hly
-plot(c(1),"Hi")
-plot(c(1),2)
-source("main.R")
-source("main.R")
-winnersMLE
-winnersMSE
-winnersMAP
-source("main.R")
-winnersMLE
-help(points)
-points((1,2))
-points(1)
-points(1,1)
-dev.new()
-points(1,1)
-plot(c(1:2),c(1:2))
-points(3,3)
-points(1.5,1.5)
-source("main.R")
-source("main.R")
-help(match)
-source("main.R")
-lines(c(1:2),type='p')
-source("main.R")
-source("main.R")
-points(c(1:2),c(1:2),col="black")
-points(1,1,col="black")
-points(4,2,col="black")
-source("main.R")
-source("main.R")
-source("main.R")
-h2hly
-h2hty
-data.frame(winnersMLE,winnersMAP,winnersMSE,winners)
-source("main.R")
-source("main.R")
-source("main.R")
-source("main.R")
+6*10^-11
+weights
+what
+source("Logistic.R")
+probs
+source("Logistic.R")
+probs
+model$coefficients
+h2hly[,c(11,21)]
+h2hty[,c(11,21)]
+source("Logistic.R")
+probs
+source("Logistic.R")
+probs
+h2hly[,c(11,21)]
+source("Logistic.R")
+probs
+h2hty[,c(11,21)]
+h2hty[,c(11,21)]
+source("Logistic.R")
+probs
+h2hty[,c(11,21)]
+source("Logistic.R")
+source("Logistic.R")
+probs
+h2hty[,c(11,21)]
+source("Logistic.R")
+source("Logistic.R")
+probs
+h2hty[,c(11,21)]
 q()
