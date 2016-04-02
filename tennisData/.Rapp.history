@@ -1,89 +1,3 @@
-names(x)
-x[,1]
-hist3D(x)
-hist3D(z=x)
-hist3D(z=x[,1])
-hist3D(z=as.matrix(x[,1]))
-hist(x[,1])
-par(mfrow=c(1,2,3))
-par(mfrow=c(1,3))
-hist(x[,1])
-hist(x[,2])
-hist3D(z=x)
-w <- solve(t(x)%*%x)
-rm(w)
-hist(x)
-hist(x[,1])
-hist(x[,2])
-x[1,]
-hist3D(z=x)
-help(hist3D)
-hist3D(z=x,x=x[,1],y=x[,2])
-hist3D(z=x,x=x[1,],y=x[2,])
-hist3D(z=x,x=x[,1],y=x[,2])
-hist3D(z=x,x=x[,1],y=x[1,])
-hist(x)
-scatter3D(x[,1],x[,2])
-scatter3D(x[,1],x[,2],z=x)
-length(x[,1])
-length(z)
-length(x)
-scatter2D(x[,1],x[,2])
-help(dvnorm)
-help(dmvnorm)
-help(mvrnorm)
-help(dmvtnorm)
-library(mvtnorm)
-help(mvtnorm)
-help(dmvnorm)
-x <- seq(-1,1,by=0.001)
-x <- dnorm(x)
-hist(x)
-x <- seq(-1,1,by=0.001)
-x <- pnorm(x)
-hist(x)
-x <- seq(-1,1,by=0.001)
-x1 <- rnorm(1000)
-x2 <- rnorm(1000,0,0.5)
-hist(X1)
-hist(x1)
-hist(x2)
-m <- data.matrix(x1,x2)
-bij <- rmvnorm(1000,mean=colMeans(m),sigma=cov(x1,x2))
-cov(x1,x2)
-cov(m)
-m
-x1
-x2
-m <- as.matrix(data.frame(x1,x2))
-m
-me <- colMeans(m)
-me
-sig <- cov(m)
-sig
-bij <- rmvnorm(1000,mean=me,sigma=sig)
-hist(bij)
-hist3D(bij)
-hist3D(z = bij)
-dim(bij)
-y <- x1 + x2
-hist(y)
-hist(bij)
-scatter3D(x1,x2,bij)
-help(rmvnorm)
-density <- dmvnorm(bij,mean=me,sigma=sig)
-scatter3D(x1,x2,density)
-x1 <- rnorm(10000)
-x2 <- rnorm(10000,0,0.5)
-mat <- as.matrix(data.frame(x1,x2))
-bij <- rmvnorm(10000,mean=colMeans(mat),sigma=cov(mat))
-density <- dmvnorm(bij,mean=colMeans(bij),sigma = cov(bij))
-scatter3D(x1,x2,density)
-plot(denisty)
-plot(density)
-density <- dmvnorm(mat,mean=colMeans(mat),sigma=cov(mat))
-plot(density)
-hist(density)
 data.frame(mat,density)
 rm(list=ls())
 dev.kill
@@ -122,345 +36,224 @@ library(rattle)
 install.packages("rattle")
 library(rattle)
 q()
+rbinom(4,0.5)
+rbinom(4,prob=0.5)
+rbinom(9,prob=0.5,size=9)
+x <- runif(100)
+x <- as.numeric(x > 0.5)
+x
+16/(3^6)
+(3^6)*5
+(16*4)/3645
+16/3645
+x <- 0.0175583
+y <- 0.004389575
+p1 <- x/(x+y)
+p2 <- y/(x+y)
+p1
+p2
+x <- readline("Enter something: ")
+x
+x <- readline("Enter something: ")
+x
 setwd("~/Project/tennisData")
-source("analysis.R")
-library(sqldf)
-source("analysis.R")
-djok[1:5,]
+help(paste)
+rm(list=ls()) #clear workspace#
+year <- readline("Enter which year:")#
+fileName <- paste("atp_matches_","year")
+rm(list=ls()) #clear workspace#
+year <- readline("Enter which year:")
+rm(list=ls()) #clear workspace#
+year <- readline("Enter which year:")#
+fileName <- paste("atp_matches_","year")
+rm(list=ls()) #clear workspace#
+year <- readline("Enter which year:")
+2015
+year
+x <- readline("hello")
+x
+year <- readline("Enter which year:")
+year
+rm(list=ls()) #clear workspace#
+year <- readline("Enter which year:")
+rm(list=ls()) #clear workspace#
+year <- readline("Enter which year:")
+source("main.R")
+fileName
+fileName
+source("main.R")
+fileName
+source("main.R")
+fileName
+source("main.R")
+fileName
+source("main.R")
+fileName
+source("main.R")
+source("main.R")
+this_year
+last_year
+source("main.R")
+source("main.R")
+tyd[1,]
+lyd[1,]
+source("main.R")
+tyd[1,]
+source("main.R")
+names(tyd)
+help(subset)
+h2hty <- subset(tyd,winner_name == p1 && loser_name == p2,select=c(winner_name,loser_name))
+h2hty[1:5,]
+h2hty
+h2hty <- subset(tyd,winner_name == p1,select=c(winner_name,loser_name))
+h2hty
+h2hty <- subset(tyd,winner_name == p1,loser_name == p2,select=c(winner_name,loser_name))
+h2hty <- subset(tyd,winner_name,loser_name == c(p1,p2),select=c(winner_name,loser_name))
+h2hty <- subset(tyd,winner_name,loser_name == c(p1,p2),select=c(winner_name,loser_name))
+h2hty <- subset(tyd,winner_name,loser_name == p1,select=c(winner_name,loser_name))
+names(tyd)
+h2hty <- tyd[tyd$winner_name==p1 & tyd$loser_name == p2,c(11,21)]
+h2hty
+source("main.R")
 ls()
-names(model)
-model$coefficients
-p
-accuracy
-source("analysis.R")
-accs
-max(accs)
-which.max
-which.max(accs)
-0.5+0.01+0.01
-length(djok[,1])
-0.5*313
-0.7*313
-source("analysis.R")
-acc
-accuracy
-max(accs)
 ls()
-accuracy
-names(djok)
-rm(list=ls())#
-source("read.R")#
-djok <- djok[,c(32:50)]#
-#given players stat what is the probability of winning against djokovic??#
-#perform logisitc regression#
-vars <- c(1:18)#
-vars <- vars[-c(10:18)]#
-model <- glm(Result ~.,family=binomial(link='logit'),data=djok)#
-y <- as.matrix(djok[,vars])%*%as.matrix(model$coefficients[2:19]) #y <- w*x#
-y <- y + model$coefficients[1] #subtract intercept b i.e. y <- w*x + b#
-sigma <- function(x) return(1/(1+exp(-x))) #calculate probability of y as sigma(y)#
-p <- sigma(y) #this is the probability of djokovic winning given the training data#
-chat <- as.numeric(p > 0.52) #
-accuracy <- (1 - sum(abs(chat - djok$Result))/length(djok$Result)) * 100
-rm(list=ls())#
-source("read.R")#
-djok <- djok[,c(32:50)]#
-#given players stat what is the probability of winning against djokovic??#
-#perform logisitc regression#
-vars <- c(1:18)#
-vars <- vars[-c(10:18)]#
-model <- glm(Result ~.,family=binomial(link='logit'),data=djok)#
-l <- length(model$coefficients)#
-y <- as.matrix(djok[,vars])%*%as.matrix(model$coefficients[2:l]) #y <- w*x#
-y <- y + model$coefficients[1] #subtract intercept b i.e. y <- w*x + b#
-sigma <- function(x) return(1/(1+exp(-x))) #calculate probability of y as sigma(y)#
-p <- sigma(y) #this is the probability of djokovic winning given the training data#
-chat <- as.numeric(p > 0.52) #
-accuracy <- (1 - sum(abs(chat - djok$Result))/length(djok$Result)) * 100
-model$coefficients
-length(model$coefficients)
-vars
-rm(list=ls())#
-source("read.R")#
-djok <- djok[,c(32:50)]#
-#given players stat what is the probability of winning against djokovic??#
-#perform logisitc regression#
-vars <- c(1:18)#
-vars <- vars[-c(10:18)]#
-model <- glm(Result ~.,family=binomial(link='logit'),data=djok[,vars])#
-l <- length(model$coefficients)#
-y <- as.matrix(djok[,vars])%*%as.matrix(model$coefficients[2:l]) #y <- w*x#
-y <- y + model$coefficients[1] #subtract intercept b i.e. y <- w*x + b#
-sigma <- function(x) return(1/(1+exp(-x))) #calculate probability of y as sigma(y)#
-p <- sigma(y) #this is the probability of djokovic winning given the training data#
-chat <- as.numeric(p > 0.52) #
-accuracy <- (1 - sum(abs(chat - djok$Result))/length(djok$Result)) * 100
-vars
-rm(list=ls())#
-source("read.R")#
-djok <- djok[,c(32:50)]#
-#given players stat what is the probability of winning against djokovic??#
-#perform logisitc regression#
-vars <- c(1:19)#
-vars <- vars[-c(10:18)]#
-model <- glm(Result ~.,family=binomial(link='logit'),data=djok[,vars])#
-l <- length(model$coefficients)
-l
-y <- as.matrix(djok[,vars[1:(l-1)]])%*%as.matrix(model$coefficients[2:l]) #y <- w*x
-y <- y + model$coefficients[1] #subtract intercept b i.e. y <- w*x + b#
-sigma <- function(x) return(1/(1+exp(-x))) #calculate probability of y as sigma(y)#
-p <- sigma(y) #this is the probability of djokovic winning given the training data#
-chat <- as.numeric(p > 0.52) #
-accuracy <- (1 - sum(abs(chat - djok$Result))/length(djok$Result)) * 100
-accuracy
-names(djok)
-chat[chat==1]
-chat
-which(0,chat)
-chat[chat==0]
-match(chat,0)
-which.chat(0)
-match(0,chat)
-which(chat%in%0)
-rm(list=ls())#
-source("read.R")#
-djok <- djok[,c(32:50)]#
-#given players stat what is the probability of winning against djokovic??#
-#perform logisitc regression#
-vars <- c(1:19)#
-vars <- vars[-c(10:18)]#
-model <- glm(Result ~.,family=binomial(link='logit'),data=djok[,vars])#
-l <- length(model$coefficients)#
-y <- as.matrix(djok[,vars[1:(l-1)]])%*%as.matrix(model$coefficients[2:l]) #y <- w*x#
-y <- y + model$coefficients[1] #subtract intercept b i.e. y <- w*x + b#
-sigma <- function(x) return(1/(1+exp(-x))) #calculate probability of y as sigma(y)#
-p <- sigma(y) #this is the probability of djokovic winning given the training data#
-chat <- as.numeric(p > 0.52) #
-accuracy <- (1 - sum(abs(chat - djok$Result))/length(djok$Result)) * 100#
-lhat <- which(chat%in%0)#
-djokL <- djok[,lhat]
-rm(list=ls())#
-source("read.R")#
-djok <- djok[,c(32:50)]#
-#given players stat what is the probability of winning against djokovic??#
-#perform logisitc regression#
-vars <- c(1:19)#
-vars <- vars[-c(10:18)]#
-model <- glm(Result ~.,family=binomial(link='logit'),data=djok[,vars])#
-l <- length(model$coefficients)#
-y <- as.matrix(djok[,vars[1:(l-1)]])%*%as.matrix(model$coefficients[2:l]) #y <- w*x#
-y <- y + model$coefficients[1] #subtract intercept b i.e. y <- w*x + b#
-sigma <- function(x) return(1/(1+exp(-x))) #calculate probability of y as sigma(y)#
-p <- sigma(y) #this is the probability of djokovic winning given the training data#
-chat <- as.numeric(p > 0.52) #
-accuracy <- (1 - sum(abs(chat - djok$Result))/length(djok$Result)) * 100#
-lhat <- which(chat%in%0)#
-djokL <- djok[lhat,]
-summary(djokL)
-rm(list=ls())#
-source("read.R")#
-djok <- djok[,c(32:50)]#
-#given players stat what is the probability of winning against djokovic??#
-#perform logisitc regression#
-vars <- c(1:19)#
-vars <- vars[-c(10:18)]#
-model <- glm(Result ~.,family=binomial(link='logit'),data=djok[,vars])#
-l <- length(model$coefficients)#
-y <- as.matrix(djok[,vars[1:(l-1)]])%*%as.matrix(model$coefficients[2:l]) #y <- w*x#
-y <- y + model$coefficients[1] #subtract intercept b i.e. y <- w*x + b#
-sigma <- function(x) return(1/(1+exp(-x))) #calculate probability of y as sigma(y)#
-p <- sigma(y) #this is the probability of djokovic winning given the training data#
-chat <- as.numeric(p > 0.52) #
-accuracy <- (1 - sum(abs(chat - djok$Result))/length(djok$Result)) * 100#
-lhat <- which(chat%in%0)#
-djokL <- djok[lhat,vars]
-summary(djokL)
-length(djok$Result[,1])
-length(djok[,19])
-length(lhat)
-length(djok[,19][djok[,19]==0])
-rm(list=ls())#
-source("read.R")#
-djok <- djok[,c(32:50)]#
-#given players stat what is the probability of winning against djokovic??#
-#perform logisitc regression#
-vars <- c(1:19)#
-vars <- vars[-c(10:18)]#
-model <- glm(Result ~.,family=binomial(link='logit'),data=djok)#
-#model <- glm(Result ~.,family=binomial(link='logit'),data=djok[,vars])#
-l <- length(model$coefficients)#
-y <- as.matrix(djok[,1:(l-1)])%*%as.matrix(model$coefficients[2:l]) #y <- w*x#
-#y <- as.matrix(djok[,vars[1:(l-1)]])%*%as.matrix(model$coefficients[2:l]) #y <- w*x#
-y <- y + model$coefficients[1] #subtract intercept b i.e. y <- w*x + b#
-sigma <- function(x) return(1/(1+exp(-x))) #calculate probability of y as sigma(y)#
-p <- sigma(y) #this is the probability of djokovic winning given the training data#
-chat <- as.numeric(p > 0.52) #
-accuracy <- (1 - sum(abs(chat - djok$Result))/length(djok$Result)) * 100#
-lhat <- which(chat%in%0)
-length(lhat)
-djok
-kmeans
-help(kmeans)
-x <- djok[1:18]
-cl <- kmeans(x,2)
-names(cl)
-cl
-as.numeric(cl$cluster)
-djok[,19]
-djok[,c(1,19)]
-attach(djok)
-x <- as.numeric(cl$cluster)
-length(x==2)
-length(x[x==2])
-length(x[x==1])
-x <- replace(x,x==2,1)
-x <- as.numeric(cl$cluster)
-x <- replace(x,x==c(2,1),c(1,0))
-x <- replace(x,x==1,0)
-x <- replace(x,x==2,1)
+source("main.R")
+h2hty
+h2hly
+sort(h2hty)
+dim(h2hty)
+source("main.R")
+h2hly
+source("main.R")
+names(h2hly)
+h2hly$winner_name
+factor(h2hly$winner_name)
+source("main.R")
+pa1
+p1a
+p1b
+h2hly
+source("main.R")
+colnames(h2hly)
+source("main.R")
+p1a
+p2a
+p1b
+source("main.R")
+prob1
+prob2
+source("main.R")
+prob1
+prob2
+as.matrix(tyd)[1,]
+a = 1
+b = 2
+(a != b) && (b!=a)
+(a != b) & (b!=a)
+p1 = "hi"
+print(as.name("p1"))
+x <- print(as.name("p1"))
 x
-Result
-data.frame(x,Result)
-x <- cl$cluster
-x <- replace(x, x %in% c(2,1), c(1,0))
-unique(cl$cluster)
-replace(x, x %in% c(2,1), c(1,0))
-cl$cluster
-r <- function(x){#
-	l <- length(x)#
-	for (i in 1:l){#
-		if (x[i]==2) x[i] <- 1#
-		else x[i] <- 0#
-	}#
-}
-x <- cl$cluster
-r(x)
 x
-x <- r <- function(x){#
-	l <- length(x)#
-	for (i in 1:l){#
-		if (x[i]==2) x[i] <- 1#
-		else x[i] <- 0#
-	}#
-	return(x)
-}
+p1
+h2hly1 <- lyd[(lyd$winner_name==p1 & lyd$loser_name==p2) | (lyd$winner_name==p2 & lyd$loser_name==p1),c(11,21)]
+h2hly1
+h2hly1 <- lyd[((lyd$winner_name==p1 & lyd$loser_name==p2) | (lyd$winner_name==p2 & lyd$loser_name==p1)),c(11,21)]
+h2hly1
+h2hly1 <- lyd[lyd$winner_name==c(p1,p2) & lyd$loser_name==c(p1,p2),c(11,21)]
+h2hly1 <- lyd[lyd$winner_name%in%c(p1,p2) & lyd$loser_name%in%c(p1,p2),c(11,21)]
+h2hly1
+lyd$winner_name%in%c(p1,p2)
+lyd$winner_name%in%c(p1,p2) & lyd$loser_name%in%c(p1,p2)
+lyd$winner_name%in%c(p1,p2) | lyd$loser_name%in%c(p1,p2)
+h2hly1 <- lyd[lyd$winner_name%in%c(p1,p2) && lyd$loser_name%in%c(p1,p2),c(11,21)]
+h2hly1
+h2hly1 <- lyd[(as.numeric(lyd$winner_name%in%c(p1,p2)) + as.numeric(lyd$loser_name%in%c(p1,p2)))==2,c(11,21)]
+h2hly1
+x <- as.numeric(lyd$winner_name%in%c(p1,p2)
 x
-r
-x <- cl$cluster
-x <- r(x)
+x <- as.numeric(lyd$winner_name%in%c(p1,p2))
 x
-data.frame(x,Result)
-accuracy <- (1 - sum(abs(x - djok$Result))/length(djok$Result)) * 100
-accuracy
-rm(list=ls())#
-source("read.R")#
-djok <- djok[,c(32:50)]#
-#given players stat what is the probability of winning against djokovic??#
-#perform logisitc regression#
-#vars <- c(1:19)#
-#vars <- vars[-c(10:18)]#
-model <- glm(Result ~.,family=binomial(link='logit'),data=djok)#
-#model <- glm(Result ~.,family=binomial(link='logit'),data=djok[,vars])#
-l <- length(model$coefficients)#
-y <- as.matrix(djok[,1:(l-1)])%*%as.matrix(model$coefficients[2:l]) #y <- w*x#
-#y <- as.matrix(djok[,vars[1:(l-1)]])%*%as.matrix(model$coefficients[2:l]) #y <- w*x#
-y <- y + model$coefficients[1] #subtract intercept b i.e. y <- w*x + b#
-sigma <- function(x) return(1/(1+exp(-x))) #calculate probability of y as sigma(y)#
-p <- sigma(y) #this is the probability of djokovic winning given the training data#
-chat <- as.numeric(p > 0.52) #
-accuracy <- (1 - sum(abs(chat - djok$Result))/length(djok$Result)) * 100#
-cl <- kmeans(djok[1:18],2)#
-r <- function(x){#
-	l <- length(x)#
-	for (i in 1:l){#
-		if (x[i]==2) x[i] <- 1#
-		else x[i] <- 0#
-	}#
-	return(x)#
-}#
-clhat <- r(as.numeric(cl$cluster))#
-clustacc <- (1 - sum(abs(clhat - djok$Result))/length(djok$Result)) * 100
-clustacc
-accuracy
-plot(cl$cluster)
-help(kmeans)
-plot(djok[1:18],col=cl$cluster)
-plot(djok[1:18],col=cl$cluster)#
-points(cl$centers,col=1:2,pch=8)
-plot(djok[1:18],col=cl$cluster)#
-points(cl$centers,col=1:2,pch=8)
-plot(djok[,19],col=cl$cluster)
-plot(djok[,1:2],col=cl$cluster)
-rm(list=ls())#
-source("read.R")#
-djok <- djok[,c(32:50)]#
-#given players stat what is the probability of winning against djokovic??#
-#perform logisitc regression#
-#vars <- c(1:19)#
-#vars <- vars[-c(10:18)]#
-model <- glm(Result ~.,family=binomial(link='logit'),data=djok)#
-#model <- glm(Result ~.,family=binomial(link='logit'),data=djok[,vars])#
-l <- length(model$coefficients)#
-y <- as.matrix(djok[,1:(l-1)])%*%as.matrix(model$coefficients[2:l]) #y <- w*x#
-#y <- as.matrix(djok[,vars[1:(l-1)]])%*%as.matrix(model$coefficients[2:l]) #y <- w*x#
-y <- y + model$coefficients[1] #subtract intercept b i.e. y <- w*x + b#
-sigma <- function(x) return(1/(1+exp(-x))) #calculate probability of y as sigma(y)#
-p <- sigma(y) #this is the probability of djokovic winning given the training data#
-chat <- as.numeric(p > 0.52) #
-accuracy <- (1 - sum(abs(chat - djok$Result))/length(djok$Result)) * 100 #calculate accuracy of prediction#
-cl <- kmeans(djok[1:18],2) #clustering with 2 centers#
-r <- function(x){#
-	l <- length(x)#
-	for (i in 1:l){#
-		if (x[i]==2) x[i] <- 1#
-		else x[i] <- 0#
-	}#
-	return(x)#
-}#
-plot(djok[,1:2],col=cl$cluster,pch=19)#
-clhat <- r(as.numeric(cl$cluster)) #create binary cluster vector#
-clustacc <- (1 - sum(abs(clhat - djok$Result))/length(djok$Result)) * 100 #calculate accuracy of clustering
-rm(list=ls())#
-source("read.R")#
-djok <- djok[,c(32:50)]#
-#given players stat what is the probability of winning against djokovic??#
-#perform logisitc regression#
-#vars <- c(1:19)#
-#vars <- vars[-c(10:18)]#
-model <- glm(Result ~.,family=binomial(link='logit'),data=djok)#
-#model <- glm(Result ~.,family=binomial(link='logit'),data=djok[,vars])#
-l <- length(model$coefficients)#
-y <- as.matrix(djok[,1:(l-1)])%*%as.matrix(model$coefficients[2:l]) #y <- w*x#
-#y <- as.matrix(djok[,vars[1:(l-1)]])%*%as.matrix(model$coefficients[2:l]) #y <- w*x#
-y <- y + model$coefficients[1] #subtract intercept b i.e. y <- w*x + b#
-sigma <- function(x) return(1/(1+exp(-x))) #calculate probability of y as sigma(y)#
-p <- sigma(y) #this is the probability of djokovic winning given the training data#
-chat <- as.numeric(p > 0.52) #
-accuracy <- (1 - sum(abs(chat - djok$Result))/length(djok$Result)) * 100 #calculate accuracy of prediction#
-cl <- kmeans(djok[1:18],2) #clustering with 2 centers#
-r <- function(x){#
-	l <- length(x)#
-	for (i in 1:l){#
-		if (x[i]==2) x[i] <- 1#
-		else x[i] <- 0#
-	}#
-	return(x)#
-}#
-plot(djok[,1:2],col=c("red","green"),pch=19) #for visualizing#
-clhat <- r(as.numeric(cl$cluster)) #create binary cluster vector#
-clustacc <- (1 - sum(abs(clhat - djok$Result))/length(djok$Result)) * 100 #calculate accuracy of clustering
-source("analysis.R")
-source("analysis.R")
-source("analysis.R")
-accuracy
-names(model)
-plot(model)
-plot(model$effects)
-plot(model$boundary)
-model$boundary
-help(glm)
-summary(model)
-plot(model)
-q()
-accuracy
+y <- as.numeric(lyd$loser_name%in%c(p1,p2))
+y
+x + y
+sum(x)
+sum(x+y)
+tdf <- data.frame(c("1","2","3"),c("2","1","3"))
+colnames(tdf) = c("1","2","3")
+colnames(tdf) = c("1","2")
+tdf
+names(tdf)
+tdf[tdf$1 %in% names(tdf) & tdf$2 %in% names(tdf)]
+tdf[tdf$1 %in% names(tdf)]
+colnames(tdf) <- c("one","two")
+tdf[tdf$one %in% c("1","2")]
+tdf[c("1","2")%in%tdf$one]
+tdf$one %in% c("1","2")
+as.numeric(tdf$one %in% c("1","2"))
+x <- as.numeric(tdf$one %in% c("1","2"))
+x %in% c(1)
+which(x %in% c(1))
+which(tdf$one %in% c("1","2"))
+tdf$one %in% c("1","2") & tdf$two %in% c("1","2")
+source("main.R")
+probs
+probsMLE
+source("main.R")
+probsMLE
+h2hly
+source("main.R")
+h2hly
+source("main.R")
+h2hly
+h2hty
+source("main.R")
+source("main.R")
+source("main.R")
+source("main.R")
+source("main.R")
+source("main.R")
+source("main.R")
+source("main.R")
+h2hly
+source("main.R")
+h2hly
+plot(c(1),"Hi")
+plot(c(1),2)
+source("main.R")
+source("main.R")
+winnersMLE
+winnersMSE
+winnersMAP
+source("main.R")
+winnersMLE
+help(points)
+points((1,2))
+points(1)
+points(1,1)
+dev.new()
+points(1,1)
+plot(c(1:2),c(1:2))
+points(3,3)
+points(1.5,1.5)
+source("main.R")
+source("main.R")
+help(match)
+source("main.R")
+lines(c(1:2),type='p')
+source("main.R")
+source("main.R")
+points(c(1:2),c(1:2),col="black")
+points(1,1,col="black")
+points(4,2,col="black")
+source("main.R")
+source("main.R")
+source("main.R")
+h2hly
+h2hty
+data.frame(winnersMLE,winnersMAP,winnersMSE,winners)
+source("main.R")
+source("main.R")
+source("main.R")
+source("main.R")
 q()
