@@ -18,5 +18,5 @@ n <- length(w) #length of weight vector
 what <- as.matrix(w[2:n]) #weight vector minus the intercept
 dataty <- as.matrix(h2hty[32:(32+n-2)]) #this year data with only match stats
 sigmoid <- function(x) return(1/(1+exp(-x))) #sigmoid definition
-yhat <- (dataty%*%what) + w[1] #estimated probability of player 1 winning
-probs <- as.numeric(sigmoid(yhat) > 0.5) #bin to 0,1, 1 means player one wins and 0 means otherwise.
+yhat <- sigmoid((dataty%*%what) + w[1]) #estimated probability of player 1 winning
+probs <- as.numeric(yhat > 0.5) #bin to 0,1, 1 means player one wins and 0 means otherwise.
